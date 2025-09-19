@@ -1,0 +1,112 @@
+let o = document.getElementsByClassName("box");
+let button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+    Array.from(o).forEach(el => {
+        el.innerHTML = "";
+        el.classList.remove("winner");
+    });
+    count = 0;
+});
+
+let count = 0;
+
+for (let i = 0; i < o.length; i++) {
+    o[i].addEventListener('click', () => {
+        if (o[i].innerText !== '') return;
+
+        o[i].innerText = (count % 2 === 0) ? 'X' : '0';
+        count++;
+
+        // ---- WIN CHECKS FOR X ----
+        if (o[0].innerText === "X" && o[1].innerText === "X" && o[2].innerText === "X") {
+            o[0].classList.add("winner"); o[1].classList.add("winner"); o[2].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+        if (o[0].innerText === "X" && o[3].innerText === "X" && o[6].innerText === "X") {
+            o[0].classList.add("winner"); o[3].classList.add("winner"); o[6].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+        if (o[0].innerText === "X" && o[5].innerText === "X" && o[8].innerText === "X") {
+            o[0].classList.add("winner"); o[5].classList.add("winner"); o[8].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+        if (o[1].innerText === "X" && o[4].innerText === "X" && o[5].innerText === "X") {
+            o[1].classList.add("winner"); o[4].classList.add("winner"); o[5].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+        if (o[2].innerText === "X" && o[7].innerText === "X" && o[8].innerText === "X") {
+            o[2].classList.add("winner"); o[7].classList.add("winner"); o[8].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+        if (o[2].innerText === "X" && o[3].innerText === "X" && o[5].innerText === "X") {
+            o[2].classList.add("winner"); o[3].classList.add("winner"); o[5].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+        if (o[3].innerText === "X" && o[4].innerText === "X" && o[8].innerText === "X") {
+            o[3].classList.add("winner"); o[4].classList.add("winner"); o[8].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+        if (o[6].innerText === "X" && o[7].innerText === "X" && o[5].innerText === "X") {
+            o[6].classList.add("winner"); o[7].classList.add("winner"); o[5].classList.add("winner");
+            document.body.innerHTML = <div style="font-size:40px;color:lime;">X Wins</div>;
+            return;
+        }
+
+        // ---- WIN CHECKS FOR 0 ----
+        if (o[0].innerText === "0" && o[1].innerText === "0" && o[2].innerText === "0") {
+            o[0].classList.add("winner"); o[1].classList.add("winner"); o[2].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+        if (o[0].innerText === "0" && o[3].innerText === "0" && o[6].innerText === "0") {
+            o[0].classList.add("winner"); o[3].classList.add("winner"); o[6].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+        if (o[0].innerText === "0" && o[5].innerText === "0" && o[8].innerText === "0") {
+            o[0].classList.add("winner"); o[5].classList.add("winner"); o[8].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+        if (o[1].innerText === "0" && o[4].innerText === "0" && o[5].innerText === "0") {
+            o[1].classList.add("winner"); o[4].classList.add("winner"); o[5].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+        if (o[2].innerText === "0" && o[7].innerText === "0" && o[8].innerText === "0") {
+            o[2].classList.add("winner"); o[7].classList.add("winner"); o[8].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+        if (o[2].innerText === "0" && o[3].innerText === "0" && o[5].innerText === "0") {
+            o[2].classList.add("winner"); o[3].classList.add("winner"); o[5].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+        if (o[3].innerText === "0" && o[4].innerText === "0" && o[8].innerText === "0") {
+            o[3].classList.add("winner"); o[4].classList.add("winner"); o[8].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+        if (o[6].innerText === "0" && o[7].innerText === "0" && o[5].innerText === "0") {
+            o[6].classList.add("winner"); o[7].classList.add("winner"); o[5].classList.add("winner");
+            document.body.innerHTML += <div style="font-size:40px;color:white;">0 Wins</div>;
+            return;
+        }
+
+        // ---- DRAW ----
+        if (count === 9) {
+            setTimeout(() => {
+                button.click();
+            }, 1000);
+        }
+    });
+}
